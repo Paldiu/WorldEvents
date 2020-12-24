@@ -1,0 +1,6 @@
+name: CombatAPI
+main: cc.bb.A
+author: Mavasukra
+api-version: 1.16
+version: 1.0
+description: API for Combat Mechanic Plugins
