@@ -1,13 +1,14 @@
 package io.github.paldiu.api;
 
-import net.minecraft.server.EntityAreaEffectCloud;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.AreaEffectCloud;
+import org.bukkit.entity.Mob;
 
-public interface ILocustSwarm {
+public interface ILocustSwarm extends Mob {
     ILocustSwarm getSwarm();
 
-    EntityAreaEffectCloud getSwarmCloud();
+    AreaEffectCloud getSwarmCloud();
 
     Location getSwarmLocation();
 

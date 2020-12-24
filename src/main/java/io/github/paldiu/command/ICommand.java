@@ -1,6 +1,5 @@
 package io.github.paldiu.command;
 
-import io.github.paldiu.WorldEvents;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -8,10 +7,9 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
+import java.util.Objects;
 
 public abstract class ICommand implements CommandExecutor, TabCompleter {
     protected JavaPlugin plugin;
@@ -47,7 +45,7 @@ public abstract class ICommand implements CommandExecutor, TabCompleter {
     }
 
     public final void register(String name) {
-        plugin.getCommand(name).setExecutor(this);
-        plugin.getCommand(name).setTabCompleter(this);
+        Objects.requireNonNull(plugin.getCommand(name)).setExecutor(this);
+        Objects.requireNonNull(plugin.getCommand(name)).setTabCompleter(this);
     }
 }

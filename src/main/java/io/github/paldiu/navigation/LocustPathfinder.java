@@ -1,20 +1,25 @@
 package io.github.paldiu.navigation;
 
 import com.destroystokyo.paper.entity.Pathfinder;
-import net.minecraft.server.PathfinderGoal;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class CustomGoal implements Pathfinder {
+public class LocustPathfinder<T extends Mob> implements Pathfinder {
+    protected final Mob entity;
+
+    public LocustPathfinder(T entity) {
+        this.entity = entity;
+     }
 
 
     @NotNull
     @Override
     public Mob getEntity() {
-        return null;
+        return entity;
     }
 
     @Override
@@ -46,6 +51,31 @@ public class CustomGoal implements Pathfinder {
     }
 
     @Override
+    public boolean moveTo(@NotNull Location loc) {
+        return false;
+    }
+
+    @Override
+    public boolean moveTo(@NotNull Location loc, double speed) {
+        return false;
+    }
+
+    @Override
+    public boolean moveTo(@NotNull LivingEntity target) {
+        return false;
+    }
+
+    @Override
+    public boolean moveTo(@NotNull LivingEntity target, double speed) {
+        return false;
+    }
+
+    @Override
+    public boolean moveTo(@NotNull Pathfinder.PathResult path) {
+        return false;
+    }
+
+    @Override
     public boolean moveTo(@NotNull Pathfinder.PathResult pathResult, double v) {
         return false;
     }
@@ -73,5 +103,10 @@ public class CustomGoal implements Pathfinder {
     @Override
     public boolean canFloat() {
         return false;
+    }
+
+    @Override
+    public void setCanFloat(boolean b) {
+
     }
 }
